@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eesha Rizwan</title>
+<meta name="description" content="Eesha Rizwan: CS master's student at UIUC working in data science, analytics, and LLM systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3F5F2;
+    --surface: #E7ECE8;
+    --ink: #12343B;
+    --muted: #55686C;
+    --line: #CFD8D3;
+    --accent: #E8A317;
+    --accent-ink: #12343B;
+    --cell-0: #DDE4DF;
+    --cell-1: #A9C9C4;
+    --cell-2: #5E9E97;
+    --cell-3: #2C6E6A;
+    --cell-4: #E8A317;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0F1E22;
+      --surface: #16292E;
+      --ink: #E4ECE9;
+      --muted: #9AAEAD;
+      --line: #27403F;
+      --accent: #F2B33D;
+      --accent-ink: #0F1E22;
+      --cell-0: #1A2F33;
+      --cell-1: #1F4A4A;
+      --cell-2: #2E6E69;
+      --cell-3: #4FA39A;
+      --cell-4: #F2B33D;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 17px/1.6 "Instrument Sans", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 0; gap: 16px; flex-wrap: wrap;
+  }
+  nav .mark { font: 700 18px/1 "Bricolage Grotesque", sans-serif; text-decoration: none; }
+  nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; flex-wrap: wrap; }
+  nav ul a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; }
+  nav ul a:hover { color: var(--ink); }
+
+  /* Hero */
+  .hero {
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center;
+    padding: 72px 0 88px;
+  }
+  h1 {
+    font: 700 clamp(48px, 8vw, 92px)/0.95 "Bricolage Grotesque", sans-serif;
+    letter-spacing: -0.03em; margin: 0 0 24px;
+  }
+  .lede { font-size: 20px; line-height: 1.5; color: var(--muted); max-width: 34ch; margin: 0 0 32px; }
+  .lede strong { color: var(--ink); font-weight: 600; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 15px;
+    text-decoration: none; border: 2px solid var(--ink);
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn.primary:hover { filter: brightness(1.05); color: var(--accent-ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--bg); }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* Heatmap */
+  .heat figure { margin: 0; }
+  .grid {
+    display: grid; grid-template-columns: repeat(20, 1fr); gap: 5px;
+    padding: 22px; background: var(--surface); border-radius: 18px;
+  }
+  .cell { aspect-ratio: 1; border-radius: 3px; background: var(--cell-0); }
+  .grid.go .cell { animation: fill .5s ease-out both; animation-delay: calc(var(--c) * 45ms + var(--r) * 18ms); }
+  @keyframes fill { from { background: var(--cell-0); transform: scale(.6); } }
+  .heat figcaption { font-size: 14px; color: var(--muted); margin-top: 12px; padding-left: 4px; }
+
+  /* Sections */
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  .sec-head { display: grid; grid-template-columns: 220px 1fr; gap: 40px; }
+  h2 {
+    font: 700 30px/1.1 "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em;
+    margin: 0; position: sticky; top: 24px; align-self: start;
+  }
+  h3 { font: 600 20px/1.3 "Bricolage Grotesque", sans-serif; margin: 0; letter-spacing: -0.01em; }
+  p { margin: 0 0 14px; max-width: 68ch; }
+
+  /* Experience */
+  .roles { display: flex; flex-direction: column; gap: 36px; }
+  .role-top { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+  .org { color: var(--muted); font-weight: 500; margin: 2px 0 10px; }
+  .when { color: var(--muted); font-size: 15px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  ul.points { margin: 0; padding-left: 18px; }
+  ul.points li { margin-bottom: 8px; max-width: 68ch; }
+  ul.points li::marker { color: var(--accent); }
+
+  /* Projects */
+  .projects { display: flex; flex-direction: column; }
+  .project {
+    display: grid; grid-template-columns: 1fr auto; gap: 8px 24px;
+    padding: 26px 0; border-bottom: 1px solid var(--line);
+  }
+  .project:first-child { padding-top: 0; }
+  .project.featured {
+    background: var(--surface); border: 0; border-radius: 18px;
+    padding: 28px; margin-bottom: 18px;
+  }
+  .project p { grid-column: 1 / -1; margin: 4px 0 6px; color: var(--muted); }
+  .project.featured p { color: var(--ink); }
+  .links { display: flex; gap: 16px; font-weight: 600; font-size: 15px; align-self: start; flex-wrap: wrap; }
+  .tags { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .tags li {
+    font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--muted);
+  }
+  .project.featured .tags li { border-color: var(--cell-2); }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px 40px; }
+  .skills h3 { font-size: 17px; margin-bottom: 8px; }
+  .skills p { color: var(--muted); font-size: 16px; }
+
+  /* Education */
+  .edu { display: flex; flex-direction: column; gap: 22px; }
+
+  /* Activity */
+  .activity img { width: 100%; height: auto; display: block; }
+
+  /* Contact */
+  .contact { padding: 80px 0 64px; }
+  .contact .big {
+    font: 700 clamp(30px, 5vw, 52px)/1.05 "Bricolage Grotesque", sans-serif;
+    letter-spacing: -0.02em; margin: 0 0 20px; max-width: 18ch;
+  }
+  footer { padding: 24px 0 40px; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 40px 0 56px; }
+    .sec-head { grid-template-columns: 1fr; gap: 24px; }
+    h2 { position: static; }
+    .grid { grid-template-columns: repeat(14, 1fr); gap: 4px; padding: 16px; }
+    .project, .project.featured { grid-template-columns: 1fr; }
+    .project.featured { padding: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .grid.go .cell { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav aria-label="Main">
+    <a class="mark" href="#top">Eesha Rizwan</a>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1>Eesha Rizwan</h1>
+      <p class="lede">CS master's student at <strong>UIUC</strong> building data pipelines, dashboards, and LLM systems that people can actually use.</p>
+      <div class="actions">
+        <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">View resume</a>
+        <a class="btn ghost" href="https://github.com/eesharizwan" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub
+        </a>
+        <a class="btn ghost" href="http://www.linkedin.com/in/eesha-rizwan-218888336" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.18 0h13.64C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.18 1.15H1.18C.52 16 0 15.48 0 14.85V1.15zm4.94 12.24V6.17H2.54v7.22h2.4zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.01zm4.91 8.2V9.36c0-.22.02-.43.08-.59.17-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.87h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.27 0-1.84.7-2.16 1.19v.02h-.02l.02-.02V6.17h-2.4c.03.68 0 7.22 0 7.22h2.4z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <div class="heat">
+      <figure>
+        <div class="grid" id="grid" aria-hidden="true"></div>
+        <figcaption>Every square is a day. The gold ones are the good days.</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="sec-head">
+      <h2>About</h2>
+      <div>
+        <p>I'm a Master's student in Computer Science at the University of Illinois Urbana-Champaign, after a BA in Data Science (minors in CS and Math) from Knox College.</p>
+        <p>My work sits where data meets the people who need it: fraud detection models that auditors can trust, retrieval-augmented chatbots that know when to hand off to a human, and pipelines that non-technical staff can run on their own. I'm looking for data science and analytics roles.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <div class="roles">
+
+        <article>
+          <div class="role-top"><h3>Data Steward</h3><span class="when">Sep 2026 – Present</span></div>
+          <div class="org">Education Justice Project, Urbana-Champaign</div>
+          <ul class="points">
+            <li>Build and maintain Tableau dashboards and databases that support quantitative reporting, data-driven decisions, and stakeholder communication across EJP's programs.</li>
+          </ul>
+        </article>
+
+        <article>
+          <div class="role-top"><h3>Research &amp; Documentation Assistant</h3><span class="when">Sep 2026 – Present</span></div>
+          <div class="org">Office of the CIO / Illinois Computes, UIUC</div>
+          <ul class="points">
+            <li>Support the Research &amp; Innovation Enablement team with research computing analysis, comparative infrastructure research, and researcher-facing guides and knowledge base content.</li>
+            <li>Engineered a Python pipeline (pandas, openpyxl) that normalizes four Zoom export formats, resolves attendees through a shared registry with QC gates, and generates per-session and program-wide HTML dashboards, with a guided runner so non-technical staff can run it end to end.</li>
+          </ul>
+        </article>
+
+        <article>
+          <div class="role-top"><h3>AI/ML Developer Intern</h3><span class="when">Jan 2026 – Mar 2026</span></div>
+          <div class="org">Knox College, Galesburg, IL</div>
+          <ul class="points">
+            <li>Engineered an LLM-powered agentic chatbot with a RAG architecture using Llama 3.2, FAISS vector search, and FastAPI.</li>
+            <li>Built intent classification, semantic search, confidence-based routing, and evaluation-driven escalation logic to flag failure modes before they reached users.</li>
+          </ul>
+        </article>
+
+        <article>
+          <div class="role-top"><h3>Data Science Intern</h3><span class="when">Sep 2025 – Dec 2025</span></div>
+          <div class="org">Synavos, Pakistan</div>
+          <ul class="points">
+            <li>Designed and deployed a hybrid fraud and anomaly detection system across 60K+ ERP transactions, using SQL to query and join datasets and surface pricing irregularities, vendor concentration risk, and suspicious purchasing.</li>
+            <li>Built end-to-end ML pipelines combining Isolation Forests, rule-based scoring, and LSTM Autoencoders (Python, scikit-learn, XGBoost, TensorFlow) to catch both statistical and temporal anomalies.</li>
+            <li>Shipped Streamlit and Power BI dashboards with explainable AI insights for vendor risk monitoring, cutting manual audit effort by about 50%.</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head">
+      <h2>Projects</h2>
+      <div class="projects">
+
+        <article class="project featured">
+          <h3>Fraud &amp; anomaly detection dashboard</h3>
+          <div class="links"><a href="https://github.com/eesharizwan/fraud-detection-dashboard" target="_blank" rel="noopener">Code</a></div>
+          <p>Flags suspicious transactions with XGBoost and LSTM Autoencoders, then explains each flag with SHAP so a reviewer can see why it was raised.</p>
+          <ul class="tags"><li>Python</li><li>XGBoost</li><li>TensorFlow</li><li>SHAP</li><li>Streamlit</li></ul>
+        </article>
+
+        <article class="project featured">
+          <h3>Pharmacy analytics dashboard</h3>
+          <div class="links">
+            <a href="https://github.com/eesharizwan/pharmacy-dashboard" target="_blank" rel="noopener">Code</a>
+            <a href="https://public.tableau.com/app/profile/eesha.rizwan/viz/PLPerformanceDashboard_17883815524110/PLPerformanceDashboard" target="_blank" rel="noopener">Tableau dashboard</a>
+            <!-- Add the live app link here when ready:
+            <a href="YOUR-VERCEL-URL" target="_blank" rel="noopener">Live app</a>
+            -->
+          </div>
+          <p>Full-stack financial analytics on 50 months of real P&amp;L data, with modules for leakage, forecasting, seasonal trends, expenses, and margins. Deployed on Vercel, with a companion Tableau Public dashboard.</p>
+          <ul class="tags"><li>React</li><li>FastAPI</li><li>pandas</li><li>Tableau</li><li>Forecasting</li></ul>
+        </article>
+
+        <article class="project">
+          <h3>Zoom attendance dashboards</h3>
+          <div class="links">
+            <a href="https://research-enablement.github.io/zoom-attendance-web/" target="_blank" rel="noopener">Live app</a>
+            <a href="https://github.com/Research-Enablement/zoom-attendance-web" target="_blank" rel="noopener">Code</a>
+          </div>
+          <p>A browser tool that turns raw Zoom exports into attendance dashboards for UIUC's Research &amp; Innovation Enablement programs. It runs a full Python pipeline in the browser, so users install nothing and their data never leaves their computer. It matches unrecognized Zoom names to known people and remembers those matches, keeps one Excel history file, and exports session dashboards, program overviews, and mailing lists. A public template lets other departments set it up for their own programs.</p>
+          <ul class="tags"><li>Python</li><li>Pyodide</li><li>pandas</li><li>HTML</li><li>Data quality</li></ul>
+        </article>
+
+        <article class="project">
+          <h3>Knox CTL tutoring chatbot</h3>
+          <div class="links"><a href="https://github.com/eesharizwan/knox-ctl-chatbot" target="_blank" rel="noopener">Code</a></div>
+          <p>A local RAG chatbot that answers questions about tutor schedules, locations, and booking in plain language, running fully on-device with Ollama.</p>
+          <ul class="tags"><li>Llama 3.2</li><li>FAISS</li><li>FastAPI</li><li>Ollama</li></ul>
+        </article>
+
+        <article class="project">
+          <h3>Hadoop and Spark cluster</h3>
+          <div class="links"><a href="https://github.com/eesharizwan/CS511-MP1" target="_blank" rel="noopener">Code</a></div>
+          <p>A Dockerized multi-node HDFS and Spark cluster built for UIUC CS 511 (Advanced Data Management). I built the Spark half, which ran on top of a teammate's HDFS setup and passed the full test suite.</p>
+          <ul class="tags"><li>Spark</li><li>HDFS</li><li>Docker</li><li>Team project</li></ul>
+        </article>
+
+        <article class="project">
+          <h3>PageRank at scale</h3>
+          <div class="links"><a href="https://github.com/eesharizwan/CS511MP2" target="_blank" rel="noopener">Code</a></div>
+          <p>A distributed PageRank computation that runs on the CS 511 Hadoop and Spark cluster from the previous project.</p>
+          <ul class="tags"><li>Spark</li><li>PageRank</li><li>Distributed computing</li><li>Team project</li></ul>
+        </article>
+
+        <article class="project">
+          <h3>Cabe, a 2D horror-survival game</h3>
+          <div class="links"><a href="https://github.com/eesharizwan/cabe-horror-game" target="_blank" rel="noopener">Code</a></div>
+          <p>A team-built horror game made in Godot for CS 292.</p>
+          <ul class="tags"><li>Godot</li><li>GDScript</li><li>Team project</li></ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div>
+          <h3>Languages &amp; tools</h3>
+          <p>Python, SQL, R, Java, JavaScript, React, Git and GitHub, Excel, Google Sheets</p>
+        </div>
+        <div>
+          <h3>ML &amp; data</h3>
+          <p>scikit-learn, XGBoost, TensorFlow, pandas, NumPy, Matplotlib, NLP, feature engineering, data preprocessing</p>
+        </div>
+        <div>
+          <h3>LLMs &amp; agents</h3>
+          <p>RAG, agentic workflows, FAISS, SentenceTransformers, spaCy, FastAPI, API integration</p>
+        </div>
+        <div>
+          <h3>Analytics &amp; BI</h3>
+          <p>Tableau, Power BI, Streamlit, KPI design, stakeholder reporting</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head">
+      <h2>Education</h2>
+      <div class="edu">
+        <article>
+          <div class="role-top"><h3>University of Illinois Urbana-Champaign</h3><span class="when">Expected May 2028</span></div>
+          <div class="org">Master's in Computer Science</div>
+        </article>
+        <article>
+          <div class="role-top"><h3>Knox College</h3><span class="when">June 2026</span></div>
+          <div class="org">BA in Data Science, minors in Computer Science and Mathematics. GPA 3.91</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="activity" class="activity">
+    <div class="sec-head">
+      <h2>Activity</h2>
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/eesharizwan/eesharizwan/output/pacman-contribution-graph-dark.svg">
+        <img alt="Pac-Man eating my GitHub contribution graph" src="https://raw.githubusercontent.com/eesharizwan/eesharizwan/output/pacman-contribution-graph.svg" onerror="document.getElementById('activity').hidden = true">
+      </picture>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <p class="big">Hiring for data science or analytics? Let's talk.</p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:erizwan915@gmail.com">Email me</a>
+      <a class="btn ghost" href="http://www.linkedin.com/in/eesha-rizwan-218888336" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+    </div>
+  </section>
+
+  <footer>Eesha Rizwan, 2026. Built by hand and hosted on GitHub Pages.</footer>
+</div>
+
+<script>
+  // Decorative contribution-style grid in the hero
+  (function () {
+    var grid = document.getElementById('grid');
+    var cols = window.matchMedia('(max-width: 820px)').matches ? 14 : 20;
+    var rows = 7;
+    var seed = 11;
+    function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    var frag = document.createDocumentFragment();
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var x = rand() + c / cols * 0.35;          // a little busier toward the present
+        var level = x < 0.35 ? 0 : x < 0.6 ? 1 : x < 0.85 ? 2 : x < 1.12 ? 3 : 4;
+        var cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.style.background = 'var(--cell-' + level + ')';
+        cell.style.setProperty('--c', c);
+        cell.style.setProperty('--r', r);
+        frag.appendChild(cell);
+      }
+    }
+    grid.appendChild(frag);
+    requestAnimationFrame(function () { grid.classList.add('go'); });
+  })();
+</script>
+</body>
+</html>
