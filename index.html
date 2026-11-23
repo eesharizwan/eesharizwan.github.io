@@ -94,7 +94,10 @@
   .skills h3 { font: 600 16px/1.3 "IBM Plex Sans", sans-serif; color: var(--peach); margin-bottom: 8px; }
   .skills p { color: var(--muted); font-size: 16px; }
 
-  .edu { display: flex; flex-direction: column; gap: 22px; }
+  .edu { display: flex; flex-direction: column; gap: 26px; }
+  .edu article { display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: start; }
+  .edu .logo { width: 56px; height: 56px; border-radius: 10px; object-fit: contain; display: block; }
+  .edu .logo.missing { visibility: hidden; }
   .activity picture { display: block; padding: 16px; background: var(--surface); border: 2px solid var(--line); }
   .activity img { width: 100%; height: auto; display: block; }
 
@@ -319,12 +322,18 @@
       <h2>Education</h2>
       <div class="edu">
         <article>
-          <div class="role-top"><h3>University of Illinois Urbana-Champaign</h3><span class="when">Expected May 2028</span></div>
-          <div class="org">Master's in Computer Science</div>
+          <img class="logo" src="uiuc-logo.png" alt="University of Illinois Urbana-Champaign logo" onerror="this.classList.add('missing')">
+          <div>
+            <div class="role-top"><h3>University of Illinois Urbana-Champaign</h3><span class="when">Expected May 2028</span></div>
+            <div class="org">Master's in Computer Science</div>
+          </div>
         </article>
         <article>
-          <div class="role-top"><h3>Knox College</h3><span class="when">June 2026</span></div>
-          <div class="org">BA in Data Science, minors in Computer Science and Mathematics. GPA 3.91</div>
+          <img class="logo" src="knox-logo.png" alt="Knox College logo" onerror="this.classList.add('missing')">
+          <div>
+            <div class="role-top"><h3>Knox College</h3><span class="when">June 2026</span></div>
+            <div class="org">BA in Data Science, minors in Computer Science and Mathematics. GPA 3.91</div>
+          </div>
         </article>
       </div>
     </div>
